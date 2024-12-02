@@ -1,0 +1,1 @@
+import{$a as s,Fa as n,Ia as l,_a as a,eb as p}from"./chunk-LDE3AH7G.js";var e=class t{showContent=n(!1);static \u0275fac=function(o){return new(o||t)};static \u0275cmp=l({type:t,selectors:[["app-control-flow"]],decls:2,vars:0,template:function(o,c){o&1&&(a(0,"p"),p(1,"control-flow works!"),s())},encapsulation:2})};export{e as default};

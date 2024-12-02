@@ -1,0 +1,15 @@
+#Variables de entorno
+.env
+
+# Dependencias
+node_modules/
+
+# Archivos de compilación/producción
+dist/
+build/
+
+# Archivos específicos de versiones o IDEs
+*.iml
+*.lock
+*.tsbuildinfo
+

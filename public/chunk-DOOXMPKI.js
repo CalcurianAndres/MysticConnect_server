@@ -1,0 +1,1 @@
+import{$a as a,Ia as t,_a as n,eb as i}from"./chunk-LDE3AH7G.js";var o=class s{static \u0275fac=function(e){return new(e||s)};static \u0275cmp=t({type:s,selectors:[["app-usuarios"]],decls:2,vars:0,template:function(e,p){e&1&&(n(0,"p"),i(1,"usuarios works!"),a())},encapsulation:2})};export{o as default};
