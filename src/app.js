@@ -23,5 +23,8 @@ module.exports = (io) => {
     app.use('/api/clientes', clientesRoutes(io)); // Pasa io a las rutas de clientes
     app.use('/api/reportes', reportesRoutes(io)); // Pasa io a las rutas de reportes
     app.use('/api/login', loginRoutes(io)); // Pasa io a las rutas de reportes
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../public', 'index.csr.html'));
+    });
     return app;
 };

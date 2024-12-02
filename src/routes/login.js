@@ -12,6 +12,8 @@ module.exports = (io) => {
     router.post('/', async (req, res) => {
         const body = req.body;
 
+        console.log(body)
+
         const SEED = process.env.SEED;
         const EXP  = process.env.EXP;
     
@@ -28,8 +30,6 @@ module.exports = (io) => {
             }
     
             const passwordValid = await bcrypt.compare(body.password, usuarioDB.password);
-
-            console.log()
     
             if (!passwordValid) {
                 return res.status(400).json({
