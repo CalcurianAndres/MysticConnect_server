@@ -6,6 +6,7 @@ const productosRoutes = require('./routes/productos')
 const clientesRoutes = require('./routes/clientes')
 const reportesRoutes = require('./routes/reportes')
 const loginRoutes = require('./routes/login')
+const planificacionRoutes = require('./routes/planificacion')
 
 const app = express();
 
@@ -23,6 +24,7 @@ module.exports = (io) => {
     app.use('/api/clientes', clientesRoutes(io)); // Pasa io a las rutas de clientes
     app.use('/api/reportes', reportesRoutes(io)); // Pasa io a las rutas de reportes
     app.use('/api/login', loginRoutes(io)); // Pasa io a las rutas de reportes
+    app.use('/api/planificacion', planificacionRoutes(io)) // pasa io a las rutas de planificación
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, '../public', 'index.csr.html'));
     });

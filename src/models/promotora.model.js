@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
     borrado: {type: Boolean, default:false},
+    restringido:{type: Boolean, default:true},
     nombre: { type: String, required: true },
     apellido: { type: String, required: true },
     correo: { type: String, required: true, unique: true },
@@ -9,6 +10,7 @@ const UserSchema = new mongoose.Schema({
     telefono: { type: String, required: true },
     sueldo: { type: Number, required: true },
     foto: { type: String },
+    estado: { type: String, default: 'habilitada' },
     role: { type: String, enum: ['Admin', 'Promotora'], required: true },
     password: {type: String, required: true}
 }, {

@@ -15,6 +15,7 @@ const reporteSchema = new Schema(
     tipo: { type: String, required: true },
     observacion: { type: String, required: true },
     evento: { type: String }, // Campo opcional
+    fecha:{ type:String}
   },
   { timestamps: true } // Agrega automáticamente `createdAt` y `updatedAt`
 );
