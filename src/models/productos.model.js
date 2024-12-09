@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const ProductoSchema = new mongoose.Schema({
-    borrado: {type: Boolean, default:false},
+    borrado: { type: Boolean, default: false },
     linea: { type: String, required: true },
     marca: { type: String, required: true },
     producto: { type: String, required: true },
