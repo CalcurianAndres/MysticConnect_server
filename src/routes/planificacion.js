@@ -5,21 +5,33 @@ module.exports = (io) => {
     const router = express.Router();
 
 
-    // CrearPlanificación
+    // Crear o actualizar Planificación
     router.post('/', async (req, res) => {
-        console.log(req.body)
         try {
-            const newPlanificacion = new Planificacion(req.body);
-            const savePlanificacion = await newPlanificacion.save();
+            let savePlanificacion;
 
-            // Emitir evento a través de Socket.IO
-            io.emit('planificacion:creado', savePlanificacion);
+            if (req.body._id) {
+                // Intentar actualizar si existe _id
+                savePlanificacion = await Planificacion.findByIdAndUpdate(
+                    req.body._id,           // ID para buscar
+                    req.body,               // Nuevos datos
+                    { new: true, upsert: true } // `new` devuelve el documento actualizado; `upsert` lo crea si no existe
+                );
+                io.emit('planificacion:actualizado', savePlanificacion);
+            } else {
+                // Crear una nueva planificación si no hay _id
+                const newPlanificacion = new Planificacion(req.body);
+                savePlanificacion = await newPlanificacion.save();
+                io.emit('planificacion:creado', savePlanificacion);
+            }
 
             res.status(201).json(savePlanificacion);
         } catch (error) {
+            console.error(error);
             res.status(400).json({ error: error.message });
         }
     });
+
 
     // Leer todos los productos
     router.get('/', async (req, res) => {
