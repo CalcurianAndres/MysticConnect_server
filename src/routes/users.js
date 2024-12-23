@@ -25,7 +25,7 @@ module.exports = (io) => {
     // Leer todos los usuarios
     router.get('/', async (req, res) => {
         try {
-            const users = await User.find({borrado:false}).select('-password');;
+            const users = await User.find({ borrado: false, role: 'Promotora' }).select('-password');;
             res.status(200).json(users);
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -72,7 +72,7 @@ module.exports = (io) => {
         try {
             const updatedUser = await User.findByIdAndUpdate(
                 req.params.id,
-                {borrado:true},
+                { borrado: true },
                 { new: true }
             );
 
