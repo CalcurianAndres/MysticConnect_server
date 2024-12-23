@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema({
     sueldo: { type: Number, required: true },
     foto: { type: String },
     estado: { type: String, default: 'habilitada' },
-    role: { type: String, enum: ['Admin', 'Promotora'], required: true },
+    role: { type: String, enum: ['Admin', 'Promotora', 'coordinadora'], required: true },
     password: { type: String, required: true }
 }, {
     timestamps: true, // Agrega createdAt y updatedAt
