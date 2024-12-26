@@ -5,6 +5,7 @@ const arrayProductosSchema = new Schema({
   producto: { type: Schema.Types.ObjectId, ref: 'Producto', required: true },
   inicio: { type: Number, required: true },
   final: { type: Number, required: true },
+  cantidad: { type: Number, required: true },
 });
 
 const reporteSchema = new Schema(
