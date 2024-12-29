@@ -34,6 +34,7 @@ const PlanSchema = new Schema(
         inicio: { type: Date, required: true },
         cierre: { type: Date, required: true },
         incentivos: { type: [IncentivoSchema], required: true },
+        incentivos_qerametik: { type: [IncentivoSchema], required: true },
         metas: {
             rebranding: { type: CategoriaMetasSchema, required: true },
             tradicional: { type: CategoriaMetasSchema, required: true }
