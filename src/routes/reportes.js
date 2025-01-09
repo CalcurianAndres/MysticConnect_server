@@ -31,18 +31,32 @@ module.exports = (io) => {
         }
     });
 
-    // Crear Reporte
+    // Crear o Actualizar Reporte
     router.post('/', async (req, res) => {
         try {
-            const newReporte = new Reportes(req.body);
-            const saveReporte = await newReporte.save();
+            const { _id, ...reporteData } = req.body; // Extraemos el _id y el resto de los datos
+
+            let saveReporte;
+
+            if (_id) {
+                // Si hay _id, intentamos encontrar y actualizar el documento
+                saveReporte = await Reportes.findByIdAndUpdate(
+                    _id,
+                    { $set: reporteData }, // Actualizamos con los nuevos datos
+                    { new: true, upsert: true } // `new: true` devuelve el documento actualizado, `upsert: true` crea uno si no existe
+                );
+            } else {
+                // Si no hay _id, creamos un nuevo documento
+                const newReporte = new Reportes(reporteData);
+                saveReporte = await newReporte.save();
+            }
 
             // Emitir evento a través de Socket.IO
             io.emit('reporte:creado', saveReporte);
 
             res.status(201).json(saveReporte);
         } catch (error) {
-            console.log(error)
+            console.log(error);
             res.status(400).json({ error: error.message });
         }
     });
