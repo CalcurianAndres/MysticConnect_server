@@ -24,7 +24,6 @@ module.exports = (io) => {
             })
                 .populate('cliente promotora')
                 .populate('productos.producto')
-                .sort({ fecha: 1 }); // Ordenar por fecha ascendente (1 para ascendente, -1 para descendente)
 
             res.status(200).json(reportes);
         } catch (error) {
