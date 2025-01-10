@@ -13,7 +13,8 @@ const UserSchema = new mongoose.Schema({
     foto: { type: String },
     estado: { type: String, default: 'habilitada' },
     role: { type: String, enum: ['Admin', 'Promotora', 'coordinadora'], required: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    marca: { type: String },
 }, {
     timestamps: true, // Agrega createdAt y updatedAt
 });
