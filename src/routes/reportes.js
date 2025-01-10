@@ -14,7 +14,7 @@ module.exports = (io) => {
                 return res.status(400).json({ error: 'Se requieren las fechas inicio y fin.' });
             }
 
-            // Buscar los reportes con filtro de fechas
+            // Buscar los reportes con filtro de fechas y ordenarlos por fecha
             const reportes = await Reportes.find({
                 borrado: false,
                 fecha: {
@@ -23,13 +23,15 @@ module.exports = (io) => {
                 }
             })
                 .populate('cliente promotora')
-                .populate('productos.producto');
+                .populate('productos.producto')
+                .sort({ fecha: 1 }); // Ordenar por fecha ascendente (1 para ascendente, -1 para descendente)
 
             res.status(200).json(reportes);
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
     });
+
 
     // Crear o Actualizar Reporte
     router.post('/', async (req, res) => {
