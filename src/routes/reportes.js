@@ -22,6 +22,25 @@ module.exports = (io) => {
                     $lte: fin.split('T')[0]    // Fecha en formato 'yyyy-mm-dd'
                 }
             })
+                .sort({ fecha: 1 })
+                .populate('cliente promotora')
+                .populate('productos.producto')
+
+            res.status(200).json(reportes);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    router.get('/:id', async (req, res) => {
+        try {
+
+            let id = req.params.id;
+            // Buscar los reportes con filtro de fechas y ordenarlos por fecha
+            const reportes = await Reportes.findOne({
+                borrado: false,
+                _id: id
+            })
                 .populate('cliente promotora')
                 .populate('productos.producto')
 
