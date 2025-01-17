@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PlanificacionSchema = new Schema({
-    cliente: { type: String },
+    cliente: { type: Schema.Types.ObjectId, ref: 'Cliente' },
     fecha: { type: Date },
     promotora: { type: String },
     ejecutivo: { type: String },
