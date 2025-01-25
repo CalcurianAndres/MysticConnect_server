@@ -3,9 +3,9 @@ const { Schema, model } = mongoose;
 
 const arrayProductosSchema = new Schema({
   producto: { type: Schema.Types.ObjectId, ref: 'Producto', required: true },
-  inicio: { type: Number, required: true },
-  final: { type: Number, required: true },
-  cantidad: { type: Number, required: true },
+  inicio: { type: Number, default: 0 },
+  final: { type: Number, default: 0 },
+  cantidad: { type: Number, default: 0 },
 });
 
 const reporteSchema = new Schema(
