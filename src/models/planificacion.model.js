@@ -39,7 +39,11 @@ const PlanSchema = new Schema(
             rebranding: { type: CategoriaMetasSchema, required: true },
             tradicional: { type: CategoriaMetasSchema, required: true }
         },
-        planificacion: { type: [PlanificacionSchema], required: true }
+        planificacion: { type: [PlanificacionSchema], required: true },
+        precios: {
+            Mystic: { type: Number },
+            Qerametik: { type: Number }
+        }
     },
     { timestamps: true }
 );
