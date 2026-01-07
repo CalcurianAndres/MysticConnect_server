@@ -25,6 +25,7 @@ module.exports = (io) => {
                 .sort({ fecha: 1 })
                 .populate('cliente promotora')
                 .populate('productos.producto')
+                .lean();
 
             res.status(200).json(reportes);
         } catch (error) {
