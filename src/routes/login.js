@@ -33,7 +33,7 @@ module.exports = (io) => {
                 return res.status(400).json({
                     ok: false,
                     err: {
-                        message: 'Contraseña incorrecta'
+                        message: 'Contraseña incorrecta!'
                     }
                 });
             }
